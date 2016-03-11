@@ -4,7 +4,7 @@ cd job
 
 compass create test
 
-/**/
+/*sass监听可能会有找不到文件问题*/
 sass --watch hh.scss:hh.css
 
 /**/
