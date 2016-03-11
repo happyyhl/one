@@ -1,2 +1,14 @@
+cd/d d:
+/*job文件夹*/
+cd job
 
+compass create test
+
+/**/
 sass --watch hh.scss:hh.css
+
+/**/
+compass help
+
+compass init
+compass watch
