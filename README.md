@@ -1,3 +1,4 @@
 # one
 xixi
-这回莎啊
+/*谷歌缓存查看*/
+chome://net.internals/#dns
