@@ -2,6 +2,12 @@ cd/d d:
 /*job文件夹*/
 cd job
 
+cd E:
+
+http://www.open-open.com/lib/view/open1414396787325.html
+
+
+
 compass create test
 
 /*sass监听可能会有找不到文件问题*/
