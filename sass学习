@@ -18,14 +18,22 @@ compass help
 
 compass init
 compass watch
+
+
 ///移动适配
-  @mixin font-dpr($font-size){
-    font-size: $font-size;
+  @mixin font-dpr($font-baseline){
+    font-size: $font-baseline;
     [data-dpr="2"] & {
-      font-size: $font-size * 2;
+      font-size: $font-baseline * 2;
+    }
+    [data-dpr="2.5"] & {
+      font-size: $font-baseline * 2.5;
+    }
+    [data-dpr="2.75"] & {
+      font-size: $font-baseline * 2.75;
     }
     [data-dpr="3"] & {
-      font-size: $font-size * 3;
+      font-size: $font-baseline * 3;
     }
   }
   》》例子
