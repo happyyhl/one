@@ -16,3 +16,29 @@ var a = cuso.content;
 editorA.ready(function() {
 	editorA.setContent(a);
  });
+ 
+ 
+ /*问题*/
+ userCenterMenu: function (menu) {
+	var menuHtml = $.ajax({
+		type:"GET",
+		url:"/views/userCenter/per_center.html",
+		data:{},
+		async:false,
+		datetype:"html"
+	}).responseText;
+	var html = $(menuHtml);
+	html.find(".col-main").append($("body").children());//*****
+	
+	$("body").empty().html($(html));
+	$("body").find(".user-ck dd a").removeClass("active");
+    	$("body").find(".user-ck dd a."+menu).addClass("active");
+	$("body").prepend(common.global.header('.type1','',true)).append(common.global.footer()).show();
+}
+=== 》》》》//多次触发
+$(function () {
+	console.log($("body .col-main").length);
+	if($("body .col-main").length <= 0){
+	}
+    
+});
