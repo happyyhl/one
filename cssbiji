@@ -1,0 +1,73 @@
+29个常用的CSS小技巧汇总（2）
+4.让超链接访问后和访问前的颜色不同且访问后仍保留hover和active效果 方法： a:link{color:#03c;} a:visited{color:#666;} a:hover{color:#f30;} a:active{color:#c30;} 按L-V-H-A的顺序设置超链接样式即可，可速记为LoVe（喜欢）HAte（讨厌）
+作者： 秀秀的大宝贝 
+链接：http://www.imooc.com/article/6829
+11.让已知高度的容器在页面中水平垂直居中 方法：
+
+#test{position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;}
+
+Know More：已知高度的容器如何在页面中水平垂直居中
+
+12.让未知尺寸的图片在已知宽高的容器内水平垂直居中 方法：
+
+
+#test{display:table-cell;*display:block;*position:relative;width:200px;height:200px;text-align:center;vertical-align:middle;}
+#test p{*position:absolute;*top:50%;*left:50%;margin:0;}
+#test p img{*position:relative;*top:-50%;*left:-50%;vertical-align:middle;}
+test是img的祖父节点，p是img的父节点。Know More：未知尺寸的图片如何水平垂直居中
+13.设置span的宽度和高度（即如何设置内联元素的宽高） 方法：
+
+span{display:block;width:200px;height:100px;}
+要使内联元素可以设置宽高，只需将其定义为块级或者内联块级元素即可。所以方法非常多样，既可以设置display属性，也可以设置float属性，或者position属性等等。
+
+14.给一个元素定义多个不同的css规则 方法：
+
+.a{color:#f00;}
+.b{background:#eee;}
+.c{background:#ccc;}
+<div class="a b">测试1</div>
+<div class="a c">测试2</div>
+多个规则之间使用空格分开，并且只有class能同时使用多个规则，id不可以
+
+15.让某个元素充满整个页面 方法：
+
+html,body{height:100%;margin:0;}
+#test{height:100%;}
+16.让某个元素距离窗口上右下左4边各10像素 方法：
+
+html,body{height:100%;margin:0;}
+html{_padding:10px;}
+#test{position:absolute;top:10px;right:10px;bottom:10px;left:10px;_position:static;_height:100%;}
+17.去掉超链接的虚线框 方法：
+
+
+a{outline:none;}
+a{outline:none;}
+IE7及更早浏览器由于不支持outline属性，需要通过js的blur()方法来实现，如<a onfocus="this.blur();"...
+
+18.容器透明，内容不透明 方法1：
+
+.outer{width:200px;height:200px;background:#000;filter:alpha(opacity=20);opacity:.2;}
+.inner{width:200px;height:200px;margin-top:-200px;}
+<div class="outer"><!--我是透明的容器--></div>
+<div class="inner">我是不透明的内容</div>
+原理是容器层与内容层并级，容器层设置透明度，内容层通过负margin或者position绝对定位等方式覆盖到容器层上
+
+方法2：
+
+.outer{width:200px;height:200px;background:rgba(0,0,0,.2);background:#000\9;filter:alpha(opacity=20)\9;}
+.outer .inner{position:relative\9;}
+<div class="outer">
+<div class="inner">我是不透明的内容</div>
+</div>
+高级浏览器直接使用rgba颜色值实现；IE浏览器在定义容器透明的同时，让子节点相对定位，也可达到效果
+
+19.让整个页面水平居中 方法：
+
+body{text-align:center;}
+#test2{width:960px;margin:0 auto;text-align:left;}
+定义body的text-align值为center将使得IE5.5也能实现居中
+
+20.为什么容器的背景色没显示出来？为什么容器无法自适应内容高度？ 方法：
+
+清除浮动 通常出现这样的情况都是由于没有清除浮动而引起的，所以Debug时应第一时间想到是否有未清除浮动的地方
