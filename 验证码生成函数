@@ -1,0 +1,55 @@
+ function yzm(){
+	        var _yzmarr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9'];
+	        var _randomnumber = 0;
+	        var _one = -1;
+	        var _color = '#cccccc';
+	        var _spanbaccolor = '#cccccc';
+	        _this = this;
+	        _this.strval = '';
+	        _this.str = '';
+	        _this.creatcodefuc = function (argument) {
+	        	return creatcode();
+	        };
+	        function creatcode() {
+	        	_this.str = '';
+		        _this.strval = '';
+		        for(var i = 0 ; i < 4 ; i ++ ){
+		        	_color = _randomnumberfc();
+		        	_spanbaccolor = _randomnumberfc();
+		        	_randomnumber = Math.random();
+		        	if(_randomnumber > 0.5){
+		        		_one = 1;
+		        	}else{
+		        		_one = -1;
+		        	}
+		            _this.str += "<span class='vtcode code"+i+"' style='display: inline-block;width: 24px;height: 31px;text-align: center; background: #ccc;color: #fff;font-size: 16px;color:"+_color+";background:"+_spanbaccolor+";-webkit-transform:rotate("+Math.floor(Math.random() * _one * 20)+"deg)'>"+_yzmarr[Math.floor(_randomnumber * _yzmarr.length)]+"</span>";
+		            _this.strval += _yzmarr[Math.floor(_randomnumber * _yzmarr.length)];
+		        }
+		        return _this.str;
+	        };
+	        function _randomnumberfc(){
+			　　var _colorStr=Math.floor(Math.random()*0xFFFFFF).toString(16).toUpperCase();
+			　　return "#"+"000000".substring(0,6-_colorStr)+_colorStr;
+			};
+	    } 		
+	    
+	    实例
+	  <button class="codegetbtn">验证</button>
+		<div class="codebox" style="width: 96px;height: 31px;overflow: hidden"></div>
+		<input type="text" class="codeinput">
+	    
+	 $(function() {
+			var code1 = new yzm();
+			$(".codebox").on('click',function(){
+				$(".codebox").html(code1.creatcodefuc());
+				console.log(code1.strval);
+			});
+			$(".codegetbtn").on('click',function() {
+				var inputval = $('.codeinput').val();
+				if(inputval == code1.strval){
+					console.log('yes');
+				}else{
+					console.log('no');
+				}
+			});
+		});
