@@ -1,0 +1,42 @@
+var http = require('http');
+var requestfuc =  function () {
+    function req (path,method,callback) {
+        var _options = {
+            hostname: '127.0.0.1',
+            port: 10086,
+            path: path,
+            method: method
+        };
+        var _req = http.request(_options, function (res) {
+                   // console.log('STATUS: ' + res.statusCode);
+                    //console.log('HEADERS: ' + JSON.stringify(res.headers));
+                res.setEncoding('utf8');
+                res.on('data', function (chunk) {
+                    callback(chunk);
+                   // console.log('BODY: ' + chunk);
+                });
+            });
+            req.on('error', function (e) {
+                console.log('problem with request: ' + e.message);
+            });
+            req.end();
+    };
+    return {
+        request: function (path, method, callback) {
+            req(path, method, callback);
+        }
+    }; 
+}
+
+
+
+
+/**
+ * 微信登录
+ */
+var weixinDataController = requestfuc();
+
+weixinDataController.request(path, method, function (data) {
+    var data = data;
+    callback(data);
+});
