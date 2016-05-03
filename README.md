@@ -42,3 +42,24 @@ $(function () {
 	}
     
 });
+
+
+	//分页插件
+	page: function() {
+		$("#Pagination").pagination(300, {
+			items_per_page: 9, //每页显示行数
+			num_edge_entries: 2, //省略号前后显示页数
+			num_display_entries: 2, //省略号前默认显示页数
+			link_to: "#", //页数链接
+			prev_text: "上一页",
+			next_text: "下一页"
+		});
+		$("#Pagination2").pagination(300, {
+			items_per_page: 9, //每页显示行数
+			num_edge_entries: 2, //省略号前后显示页数
+			num_display_entries: 2, //省略号前默认显示页数
+			link_to: "#", //页数链接
+			prev_text: "上一页",
+			next_text: "下一页"
+		});
+	},
