@@ -71,3 +71,30 @@ alert(Object.prototype.toString.call(c) === ‘[object Array]’) -------> true;
 alert(Object.prototype.toString.call(d) === ‘[object Date]’) -------> true;
 alert(Object.prototype.toString.call(e) === ‘[object Function]’) -------> true;
 alert(Object.prototype.toString.call(f) === ‘[object Function]’) -------> true;
+//js
+$("#add").on('click',function(){
+				var value = $("#ceishi option:selected").val();
+				var text = $("#ceishi option:selected").text();
+				if($("#idbox").find("#list"+value).length <= 0 ){
+					$("#idbox").append('<div class="additemlist" id="list'+value+'">'+value+'<span class="itemremove">x</span></div>');
+				}
+			});
+			$("#idbox").on('click',function(event){
+				var target = $(event.target);
+				if(target.hasClass('itemremove')){
+					target.parent().remove();
+				}
+			});
+//html
+<div class="clear">
+	<div class="select-box" id="idbox" style="height:auto">
+		<span class="label-mark">学校</span>
+		<select class="select-css" id="ceishi">
+            <option value="0">123</option>
+            <option value="1">1234</option>
+            <option value="2">12345</option>
+        </select>
+        <span class="label-mark additembtn" id="add">添加</span>
+        
+	</div>
+</div>
