@@ -1,3 +1,28 @@
 video::-webkit-media-controls {  
     display:none !important;
 }
+
+
+ionic
+
+ $scope.$on('$ionicView.loaded', function() {
+        console.log("$ionicView.loaded");
+      });
+
+      $scope.$on('$ionicView.afterEnter', function() {
+        console.log("$ionicView.afterEnter");
+      });
+
+        $scope.$on('$ionicView.beforeLeave', function() {
+          console.log("$ionicView.beforeLeave");
+        });
+        $scope.$on('$ionicView.leave', function() {
+          console.log("$ionicView.leave");
+        });
+        $scope.$on('$ionicView.afterLeave', function() {
+          player = {};
+          console.log("$ionicView.afterLeave");
+        });
+        $scope.$on('$ionicView.unloaded', function() {
+          console.log("$ionicView.unloaded");
+        });
