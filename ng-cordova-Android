@@ -1,0 +1,12 @@
+ 今天在复制文件的时候出现了这个问题，后来查了资料才知道我没有给项目加android权限，没有读写SD卡的权限，
+ 那一刻我真想抽死自己，白学了这么长时间的android，连权限的添加都忘啦T-T，好了，废话不多说，
+ 处理这个异常应该在AndroidManifest.xml文件中添加向sd卡写入文件的权限：
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+这样就可以了。
+       还有一个不该犯的错误是pen failed: EISDIR (Is a directory)
+这个异常是因为我在SD卡中创建目录文件夹的时候，应该一层一层的创建文件夹，例如：
+我要创建"/mnt/sdcard/zhufu/apkbus"这样的路径文件夹，其中“zhufu”和“apkbus”文件夹都是不存在的，
+我需要mkdir来生成空文件夹，但是不能一次同时创建这两个文件夹，而是要一层一层的来，一个一个的来，
+先创建"/mnt/sdcard/zhufu"文件夹，然后再创建“/mnt/sdcard/zhufu/apkbus”文件夹，
+另外大家容易把具体创建的文件当作要创建的空文件夹来创建，例如：将"/mnt/sdcard/zhufu/apkbus.db"当作文件夹来创建，
+这样同样会造成pen failed: EISDIR (Is a directory)，所以我们仔细创建文件夹，好了，本文到此结束，谢谢。
