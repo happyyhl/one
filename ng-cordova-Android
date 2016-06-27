@@ -10,3 +10,15 @@
 先创建"/mnt/sdcard/zhufu"文件夹，然后再创建“/mnt/sdcard/zhufu/apkbus”文件夹，
 另外大家容易把具体创建的文件当作要创建的空文件夹来创建，例如：将"/mnt/sdcard/zhufu/apkbus.db"当作文件夹来创建，
 这样同样会造成pen failed: EISDIR (Is a directory)，所以我们仔细创建文件夹，好了，本文到此结束，谢谢。
+
+
+
+
+  <!-- uc强制竖屏 -->
+  <meta name="screen-orientation" content="portrait">
+  <!-- QQ强制竖屏 -->
+  <meta name="x5-orientation" content="portrait">
+  <!-- UC强制全屏 -->
+  <meta name="full-screen" content="yes">
+  <!-- QQ强制全屏 -->
+  <meta name="x5-fullscreen" content="true">
