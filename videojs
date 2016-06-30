@@ -60,3 +60,8 @@ function autoFullScrenn(v){
   },false);
 };
 // autoFullScrenn(video_obj)
+<video id="really-cool-video" class="video-js vjs-default-skin" preload="none" width="365" height="215" >
+              <!-- <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+              <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm"> type="application/x-mpegURL"-->
+              <source id="videoSource" src="" type="application/x-mpegURL">
+            </video>
