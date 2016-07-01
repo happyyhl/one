@@ -45,6 +45,8 @@ function autoFullScrenn(v){
     alert("不支持全屏模式");
     return;
   }
+  
+
   video.addEventListener("webkitfullscreenchange",function(e){
     if(!doc.webkitIsFullScreen){//退出全屏暂停视频
       this.pause();
@@ -65,3 +67,8 @@ function autoFullScrenn(v){
               <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm"> type="application/x-mpegURL"-->
               <source id="videoSource" src="" type="application/x-mpegURL">
             </video>
+  
+  //*******************手机导航 与 底部 导航******************//
+  windowWidth =  Math.min(window.innerWidth, window.outerWidth),
+              windowHeight = Math.min(window.innerHeight, window.outerHeight),
+              statusBarH = screen.height - windowHeight,
