@@ -72,3 +72,39 @@ function autoFullScrenn(v){
   windowWidth =  Math.min(window.innerWidth, window.outerWidth),
               windowHeight = Math.min(window.innerHeight, window.outerHeight),
               statusBarH = screen.height - windowHeight,
+              /*音量控制*/
+                var curentVideoId = document.getElementById("really-cool-video_html5_api");
+                if($scope.play.isSilence){
+                    curentVideoId.muted = false;
+                    $scope.play.isSilence = false;
+                }else{
+                    curentVideoId.muted = true;
+                    $scope.play.isSilence = true;
+                }
+                /*以下iOS无效 未知原因*/
+                /*var currVolume = player.muted();
+                if (volume !== undefined && volume !== null) {
+                    player.volume(volume);
+                } else {
+                    if (currVolume) {
+                       // player.volume(0.85);
+                       player.muted(false);
+                        $scope.play.isSilence = false;
+                    } else {
+                        //player.volume(0.00);
+                        player.muted(true);
+                        $scope.play.isSilence = true;
+                    }
+                }*/
+                /*var currVolume = player.volume();
+                if (volume !== undefined && volume !== null) {
+                    player.volume(volume);
+                } else {
+                    if (currVolume <= 0) {
+                        player.volume(0.85);
+                        $scope.play.isSilence = false;
+                    } else {
+                        player.volume(0.00);
+                        $scope.play.isSilence = true;
+                    }
+                }*/
