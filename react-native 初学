@@ -1,0 +1,4 @@
+
+
+错误：Navigator Expected a component class, got [object Object].
+可能原因：有小写的标签 比如 <text><text/>
