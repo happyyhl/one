@@ -113,3 +113,11 @@ $("#add").on('click',function(){
             }
         }
     },
+
+
+document.write 的 替代方案：
+_var sNew = document.createElement("script");
+sNew.async = true;
+sNew.src = "https://example.com/script.min.js";
+var s0 = document.getElementsByTagName('script')[0];
+s0.parentNode.insertBefore(sNew, s0);
