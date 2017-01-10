@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />  
+	<title>摄像测试</title>
+	<style type="text/css">
+		button{
+			width:200px;
+			height: 40px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			margin: 15px auto;
+			color:#fff;
+			background: #8e8e8e;
+			font-size: 24px
+		}
+	</style>
+</head>
+<body style="text-align: center;">
+
+<script type="text/javascript">
+ 
+</script>
+    <video width="460px" autoplay="autoplay"></video><hr />  
+    <button type="button" title="拍照" value="拍照" onclick="getPhoto();" >确认拍照</button><br />  
+    <canvas id="canvas1" width="460" height="345"></canvas><hr />  
+    <div id="errorMsg"></div>
+  	<button id="btn1">保存PNG</button>
+  	<button id="btn2">保存JEPG</button>
+    <script type="text/javascript">  
+        // Put variables in global scope to make them available to the browser console.
+		var video = document.querySelector('video');
+		var canvas1 = document.getElementById('canvas1');  
+        var context1 = canvas1.getContext('2d');  
+		var constraints = window.constraints = {
+		  audio: false,
+		  video: true
+		};
+		var errorElement = document.querySelector('#errorMsg');
+
+		navigator.mediaDevices.getUserMedia(constraints)
+		.then(function(stream) {
+		  var videoTracks = stream.getVideoTracks();
+		  console.log('Got stream with constraints:', constraints);
+		  console.log('Using video device: ' + videoTracks[0].label);
+		  stream.onended = function() {
+		    console.log('Stream ended');
+		  };
+		  window.stream = stream; // make variable available to browser console
+		  video.srcObject = stream;
+		})
+		.catch(function(error) {
+		  if (error.name === 'ConstraintNotSatisfiedError') {
+		    errorMsg('The resolution ' + constraints.video.width.exact + 'x' +
+		        constraints.video.width.exact + ' px is not supported by your device.');
+		  } else if (error.name === 'PermissionDeniedError') {
+		    errorMsg('Permissions have not been granted to use your camera and ' +
+		      'microphone, you need to allow the page access to your devices in ' +
+		      'order for the demo to work.');
+		  }
+		  errorMsg('getUserMedia error: ' + error.name, error);
+		});
+
+		function errorMsg(msg, error) {
+		  errorElement.innerHTML += '<p>' + msg + '</p>';
+		  if (typeof error !== 'undefined') {
+		    console.error(error);
+		  }
+		}
+		//拍照  
+        function getPhoto() {  
+            context1.drawImage(video, 0, 0,460,345); //将video对象内指定的区域捕捉绘制到画布上指定的区域，实现拍照。  
+        }  
+        var btn = document.getElementById('btn1');
+
+		btn.onclick = function () {
+		    var type = 'png';
+		    download(type);
+		}
+		document.getElementById('btn2').onclick = function () {
+		    var type = 'jpg';
+		    download(type);
+		}
+		//图片下载操作,指定图片类型
+		function download(type) {
+		    //设置保存图片的类型
+		    var imgdata = canvas1.toDataURL(type);
+		    //将mime-type改为image/octet-stream,强制让浏览器下载
+		    var fixtype = function (type) {
+		        type = type.toLocaleLowerCase().replace(/jpg/i, 'jpeg');
+		        var r = type.match(/png|jpeg|bmp|gif/)[0];
+		        return 'image/' + r;
+		    }
+		    imgdata = imgdata.replace(fixtype(type), 'image/octet-stream')
+		    //将图片保存到本地
+		    var saveFile = function (data, filename) {
+		        var link = document.createElement('a');
+		        link.href = data;
+		        link.download = filename;
+		        var event = document.createEvent('MouseEvents');
+		        event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		        link.dispatchEvent(event);
+		    }
+		    var filename = new Date().toLocaleDateString() + '.' + type;
+		    saveFile(imgdata, filename);
+		}
+    </script>  
+</body>
+</html>
