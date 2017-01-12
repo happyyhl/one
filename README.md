@@ -1,6 +1,7 @@
 
-    深度复制方法：
-     function find(arr,func){
+   （1）深度复制方法
+
+    function find(arr,func){
         return arr.filter(func)[0];    
     }
     export default function deepCopy(obj,cache=[]){
@@ -21,7 +22,9 @@
         });
         return copy;
     }
-    数组去重较好的方法：
+
+   （2）数组去重较好的方法
+
     Array.prototype.uniqued = function(){
 	this.sort();
 	var _arr = [this[0]];
@@ -32,7 +35,9 @@
 	}
 	return _arr;
     }
-    识别是否是对象 
+
+    （3）识别是否是对象 
+
 	alert(Object.prototype.toString.call(a) === ‘[object String]’) -------> true;
 	alert(Object.prototype.toString.call(b) === ‘[object Number]’) -------> true;
 	alert(Object.prototype.toString.call(c) === ‘[object Array]’) -------> true;
