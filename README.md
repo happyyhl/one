@@ -21,8 +21,18 @@
         });
         return copy;
     }
-    识别是否是对象
-    通用但很繁琐的方法： prototype
+    数组去重较好的方法：
+    Array.prototype.uniqued = function(){
+	this.sort();
+	var _arr = [this[0]];
+	for(var i = 1;i<this.length;i++){
+	    if(this[i] !== _arr[_arr.length - 1]){
+	    	_arr.push(this[i]);
+	    }
+	}
+	return _arr;
+    }
+    识别是否是对象 
 	alert(Object.prototype.toString.call(a) === ‘[object String]’) -------> true;
 	alert(Object.prototype.toString.call(b) === ‘[object Number]’) -------> true;
 	alert(Object.prototype.toString.call(c) === ‘[object Array]’) -------> true;
