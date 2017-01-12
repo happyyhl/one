@@ -36,7 +36,7 @@
 	return _arr;
     }
 
-    （3）识别是否是对象 
+   （3）识别是否是对象 
 
 	alert(Object.prototype.toString.call(a) === ‘[object String]’) -------> true;
 	alert(Object.prototype.toString.call(b) === ‘[object Number]’) -------> true;
