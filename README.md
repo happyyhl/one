@@ -44,4 +44,44 @@
 	alert(Object.prototype.toString.call(d) === ‘[object Date]’) -------> true;
 	alert(Object.prototype.toString.call(e) === ‘[object Function]’) -------> true;
 	alert(Object.prototype.toString.call(f) === ‘[object Function]’) -------> true;
-
+    
+    （4）快速排序
+     方法一：
+     function quickSort(arr){
+		if(arr.length<=1){
+			return arr;
+		}    
+		var middleIndex = Math.floor(arr.length/2);
+		var mildleValue = arr.splice(middleIndex,1)[0];
+		var left = [];
+		var right = [];
+		for(var i = 0;i < arr.length;i++){
+			if(arr[i] < middleValue){
+				left.push(arr[i]);
+			}else{
+				right.push(arr[i]);
+			}
+		}
+		return quickSort(left).concat([middleValue],quickSort(right));
+     }
+     方法二：
+     function quickSort(arr,left,right){
+		if(Object.prototype.toString.call(arr) === "[object Array]" && typeof left === "number" && typeof right === "number"){
+			if(left<right){
+				var rightVal = arr[right],i = left - 1,temp;
+				for(var j = 0;j <= right;j++){
+					if(arr[j] < rightVal){
+						i++;
+						temp = arr[i];
+						arr[i] = arr[j];
+						arr[j] = temp;
+					}	
+				}
+				quickSort(arr,left,i-1);
+				quickSort(arr,i+1,right);
+			}
+			return arr;
+		}else{
+			return "参数不对！"
+		}
+     }
