@@ -5,7 +5,7 @@
         return arr.filter(func)[0];    
     }
     export default function deepCopy(obj,cache=[]){
-        if(obj === null || typeof obj !== "function"){
+        if(obj === null || typeof obj !== "object"){
             return obj;
         }
         const had = find(cache,c => c.orignal === obj);
